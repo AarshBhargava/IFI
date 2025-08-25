@@ -17,7 +17,7 @@ export default function App() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/IFI/" element={<Home />} />
           <Route path="/art/:id" element={<ArtworkDetail />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/cart" element={<Cart />} />

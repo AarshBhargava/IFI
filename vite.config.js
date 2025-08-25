@@ -3,5 +3,6 @@ import react from '@vitejs/plugin-react-swc'
 
 export default defineConfig({
   plugins: [react()],
-  server: { host: true }
+  server: { host: true },
+  base: "/IFI/"
 })
