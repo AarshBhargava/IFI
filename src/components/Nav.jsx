@@ -20,7 +20,7 @@ export default function Nav({ cartCount = 0, user = null }) {
             <li><NavLink to="/exhibition" className="hover:text-gray-900">Exhibition</NavLink></li>
             <li><NavLink to="/featured" className="hover:text-gray-900">Featured</NavLink></li>
             <li><NavLink to="/events" className="hover:text-gray-900">Events</NavLink></li>
-            <li><NavLink to="/blog" className="hover:text-gray-900">Blog</NavLink></li>
+            <li><NavLink to="/blog" className="hover:text-gray-900">Contact</NavLink></li>
             <li><NavLink to="/about" className="hover:text-gray-900">About</NavLink></li>
           </ul>
 
