@@ -12,7 +12,7 @@ export default function Nav({ cartCount = 0, user = null }) {
             <svg aria-hidden className="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none">
               <rect width="24" height="24" rx="4" fill="currentColor" opacity="0.9" />
             </svg>
-            <span>Arte Gallery</span>
+            <span>IFI</span>
           </Link>
 
           {/* Navigation links */}
