@@ -8,7 +8,7 @@ export default function Nav({ cartCount = 0, user = null }) {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <nav className="h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+          <Link to="IFI/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
             <svg aria-hidden className="w-8 h-8 text-gray-800" viewBox="0 0 24 24" fill="none">
               <rect width="24" height="24" rx="4" fill="currentColor" opacity="0.9" />
             </svg>
@@ -19,8 +19,8 @@ export default function Nav({ cartCount = 0, user = null }) {
           <ul className="hidden md:flex items-center gap-8 text-sm text-gray-700">
             <li><NavLink to="/exhibition" className="hover:text-gray-900">Exhibition</NavLink></li>
             <li><NavLink to="/featured" className="hover:text-gray-900">Featured</NavLink></li>
-            <li><NavLink to="/events" className="hover:text-gray-900">Events</NavLink></li>
-            <li><NavLink to="/blog" className="hover:text-gray-900">Contact</NavLink></li>
+            <li><NavLink to="/sell" className="hover:text-gray-900">Sell</NavLink></li>
+            <li><NavLink to="/contact" className="hover:text-gray-900">Contact</NavLink></li>
             <li><NavLink to="/about" className="hover:text-gray-900">About</NavLink></li>
           </ul>
 

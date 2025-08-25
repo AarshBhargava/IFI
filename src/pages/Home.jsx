@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import TrendingPaintings from "../Extras/TrendingPainting";
 import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
+import Navbar from "../Extras/Navbar";
 import ExhibitionGallery from "../components/ExhibitionGallery";
 import About from "../components/About";
 import FeaturedArtwork from "../components/FeaturedArtwork";
@@ -18,7 +18,6 @@ import Nav from "../components/Nav";
 export default function HeroPage() {
   return (
     <>
-      <Nav />
       <Hero />
       <Categories />
       <ExhibitionGallery />
@@ -26,7 +25,7 @@ export default function HeroPage() {
       <FeaturedArtwork />
       <FeaturedArtists />
       <Newsletter />
-      <Footer />
+      <Footer /> 
     </>
   );
 }

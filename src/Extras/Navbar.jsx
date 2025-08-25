@@ -1,7 +1,7 @@
 
 // components/TopNav.jsx
 import React from "react";
-import SearchFilters from "../Extras/SearchFilters";
+import SearchFilters from "./SearchFilters";
 
 export default function Navbar({ onSearch = () => {}, cartCount = 0, user = null }) {
   return (
@@ -13,7 +13,7 @@ export default function Navbar({ onSearch = () => {}, cartCount = 0, user = null
                 <rect width="24" height="24" rx="4" fill="currentColor" opacity="0.9" />
               </svg>
               <span className="sr-only">Arte Art Gallery</span>
-              <span className="text-sm font-medium tracking-wide">Arte Gallery</span>
+              <span className="text-sm font-medium tracking-wide">IFI</span>
             </a>
 
             <ul className="hidden md:flex items-center gap-8 text-sm text-gray-700">
