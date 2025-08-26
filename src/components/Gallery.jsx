@@ -1,101 +1,80 @@
-// Gallery.jsx
 import React from "react";
-import { motion } from "framer-motion";
-import HoverPreviewCard from "./HoverPreviewCard";
+import ArtCard from "./ArtCard";
 
-const FadeUp = ({ children, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 18 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.15 }}
-    transition={{ duration: 0.6, delay }}
-  >
-    {children}
-  </motion.div>
+const paintingFiles = [
+  "Mona Lisa, by Leonardo da Vinci, from C2RMF retouched.jpg",
+  "Van Gogh - Starry Night - Google Art Project.jpg",
+  "Claude Monet - Water Lilies - Google Art Project.jpg",
+  "The Kiss - Gustav Klimt - Google Cultural Institute.jpg",
+  "Great Wave off Kanagawa2.jpg",
+  "Meisje met de parel.jpg",
+  "Michelangelo - Creation of Adam (cropped).jpg",
+  "Eugène Delacroix - La liberté guidant le peuple.jpg",
+  "The_Birth_of_Venus_by_Botticelli.jpg",
+  "Water_Lilies.jpg",
+  "The_Kiss.jpg",
+  "Great_Wave_off_Kanagawa.jpg",
+  "The_Kiss_by_Gustav_Klimt.jpg",
+  "The_Garden_of_Earthly_Delights_by_Hieronymus_Bosch.jpg",
+
+  "Historical Painting depicting Royal Hunt and Falconry in India 1.jpg",
+  "Tableau 31 Indians hunting the bison by Karl Bodmer.jpg",
+  "Indian Encampment, oil painting by Cornelius Krieghoff, 1851.jpg",
+  "Indian - Laylá visits Majnūn in the Wilderness - 401-1952 - Saint Louis Art Museum.jpg",
+  "Bodleian Library Indian paintings MS. Douce Or. a.3 fol30r.jpg"
+  
+];
+
+const thumbs = paintingFiles.map(
+  (title) =>
+    `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(title)}?width=600`
 );
 
-export default function Gallery() {
-  const paintingFiles = [
-     "Mona Lisa, by Leonardo da Vinci, from C2RMF retouched.jpg",
-    "Van Gogh - Starry Night - Google Art Project.jpg",
-    "Claude Monet - Water Lilies - Google Art Project.jpg",
-    "The Kiss - Gustav Klimt - Google Cultural Institute.jpg",
-    "Great Wave off Kanagawa2.jpg",
-    "Meisje met de parel.jpg",
-    "Michelangelo - Creation of Adam (cropped).jpg",
-    "Eugène Delacroix - La liberté guidant le peuple.jpg",
-    "Fragonard, The Swing.jpg",
-    "The Garden of earthly delights.jpg",
-    "La scuola di Atene.jpg",
-    "A Sunday on La Grande Jatte 1884.jpg",
-    "Paul Cézanne - The Card Players - Google Art Project.jpg",
-    "Van Gogh - The Night Café - Google Art Project.jpg",
-    "Vincent van Gogh - De slaapkamer - Google Art Project.jpg",
-    "Claude Monet, Impression, soleil levant.jpg",
-    "Des Glaneuses - Jean-François Millet - Google Cultural Institute.jpg",
-    "Wheatfield with crows.jpg",
-    "Vincent van Gogh - Terrasse du café le soir.jpg",
-    "Starry Night Over the Rhône.jpg",
-    "Jan van Eyck - Arnolfini Portrait.jpg",
-    "Pieter Bruegel the Elder - Hunters in the Snow (Winter) - Google Art Project.jpg",
-    "Rembrandt van Rijn - De Nachtwacht - 1642.jpg",
-    "Johannes Vermeer - Het melkmeisje - Google Art Project.jpg",
-    "Sandro Botticelli - La Primavera - Google Art Project.jpg",
-    "Raphael - Sistine Madonna - Google Art Project.jpg",
-    "Caravaggio - The Calling of Saint Matthew (1599-1600).jpg",
-    "Turner - The Fighting Temeraire.jpg",
-    "Edgar Degas - La classe de danse - Google Art Project.jpg",
-    "Georges Seurat - Bathers at Asnières - Google Art Project.jpg",
-    "Édouard Manet - Le Déjeuner sur l'herbe.jpg",
-    "Francisco de Goya - The Third of May 1808 - Google Art Project.jpg",
-    "Pieter Bruegel the Elder - Peasant Wedding - Google Art Project.jpg",
-    "Sandro Botticelli - The Birth of Venus - Uffizi.jpg",
-    "Rembrandt - The Return of the Prodigal Son - Hermitage.jpg",
-    "Edvard Munch - The Scream.jpg"
+// Generate artwork objects
+const artworks = paintingFiles.map((file, idx) => {
+  const titles = [
+    "Spring Tree Painting","Delicate Happiness","The Room No:238",
+    "Golden Horizon","Silent Thoughts","Mystic Waves","Eternal Embrace",
+    "Dreamscape","Whispering Light","Sunset Serenity","Celestial Dreams",
+    "Ocean's Embrace","Morning Glow","Timeless Wonder","Hidden Garden",
+    "Shimmering Dusk"
   ];
+  const artists = [
+    "Lilia Orlova-Holmes, Uni...","Fares Micue, Spain","Erna Ucar, Luxembourg",
+    "Claude Monet, France","Vincent van Gogh, Netherlands","Gustav Klimt, Austria",
+    "Leonardo da Vinci, Italy","Edvard Munch, Norway","Johannes Vermeer, Netherlands",
+    "Sandro Botticelli, Italy","Georges Seurat, France","Paul Cézanne, France",
+    "Pierre-Auguste Renoir, France","Hieronymus Bosch, Netherlands","Michelangelo, Italy",
+    "Eugène Delacroix, France"
+  ];
+  const mediums = ["Oil On Canvas", "Acrylic On Canvas", "Digital On Paper", "Watercolor"];
+  const sizes = ["100 × 120 cm", "60.2 × 70.1 cm", "100.1 × 150.1 cm", "80 × 100 cm"];
+  
+  return {
+    src: thumbs[idx],
+    title: titles[idx % titles.length],
+    artist: artists[idx % artists.length],
+    medium: mediums[Math.floor(Math.random() * mediums.length)],
+    size: sizes[Math.floor(Math.random() * sizes.length)],
+    price: Math.floor(Math.random() * 1000000) + 50000
+  };
+});
 
-  // Small thumbnails (fast grid load)
-  const thumbs = paintingFiles.map(
-    (title) =>
-      `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
-        title
-      )}?width=300`
-  );
-
-  // Large images (only for hover preview)
-  const fullImages = paintingFiles.map(
-    (title) =>
-      `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
-        title
-      )}?width=1200`
-  );
-
+export default function Gallery() {
   return (
-    <section id="gallery" className="py-20">
+    <section id="gallery" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-baseline justify-between">
-          <FadeUp>
-            <h2 className="text-3xl font-semibold font-['Playfair_Display']">
-              Gallery
-            </h2>
-          </FadeUp>
-        </div>
+        <h2 className="text-3xl font-semibold font-['Playfair_Display'] text-gray-900">
+          Gallery
+        </h2>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {thumbs.map((thumb, i) => (
-            <FadeUp key={i} delay={0.05 * i}>
-              <HoverPreviewCard
-                item={{
-                  img: thumb,            
-                  fullImg: fullImages[i],  
-                  title: `Artwork ${i + 1}`,
-                  desc: "Masterpiece of fine art",
-                  date: "Public Domain",
-                  details:
-                    "This is a world-renowned painting preserved in history."
-                }}
-              />
-            </FadeUp>
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {artworks.map((art, i) => (
+            <ArtCard
+              key={i}
+              artwork={art}  // pass artwork object
+              delay={0.05 * i}
+            />
           ))}
         </div>
       </div>

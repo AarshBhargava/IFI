@@ -4,7 +4,7 @@ import Navbar from "./Extras/Navbar.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./components/About.jsx";
 import Contact from "./pages/Contact.jsx";
-import Cart from "./Extras/Cart.jsx";
+import Cart from "./components/Cart.jsx";
 import Upload from "./components/Upload.jsx";
 import Profile from "./Extras/Profile.jsx";
 import Login from "./Extras/Login.jsx";
@@ -15,6 +15,7 @@ import Exhibition from "./pages/Exhibition.jsx";
 import Nav from "./components/Nav.jsx";
 import Sell from "./pages/Sell.jsx";
 import Gallery from "./components/Gallery.jsx";
+import Discover from "./pages/Discover.jsx";
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/sell" element={<Sell />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
+          <Route path="/discover" element={<Discover />} />
         </Routes>
       </main>
     </div>

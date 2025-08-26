@@ -1,3 +1,4 @@
+// src/pages/Cart.jsx
 import create from "zustand";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,7 +30,7 @@ export default function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="text-center">
+      <div className="text-center py-20">
         <p className="text-neutral-600">Your cart is empty.</p>
         <Link to="/" className="btn-primary mt-3 inline-block">Browse artworks</Link>
       </div>
@@ -37,12 +38,12 @@ export default function Cart() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-8 max-w-7xl mx-auto px-6 lg:px-8">
       <div className="lg:col-span-2 space-y-3">
         {items.map(({ artwork, quantity }) => (
-          <div key={artwork.id} className="card p-4 flex gap-4">
+          <div key={artwork.id} className="card p-4 flex gap-4 border rounded-lg">
             <div className="w-28 h-20 overflow-hidden rounded-xl bg-neutral-100">
-              <img src={artwork.imageUrl} className="w-full h-full object-cover" alt={artwork.title} />
+              <img src={artwork.src} className="w-full h-full object-cover" alt={artwork.title} />
             </div>
             <div className="flex-1">
               <div className="font-semibold">{artwork.title}</div>
@@ -50,19 +51,19 @@ export default function Cart() {
               <div className="mt-2 flex items-center gap-2">
                 <input
                   type="number"
-                  className="input max-w-[90px]"
+                  className="input max-w-[90px] border rounded px-2 py-1"
                   min={1}
                   value={quantity}
                   onChange={(e) => setQty(artwork.id, Number(e.target.value))}
                 />
-                <button className="btn-ghost text-sm" onClick={() => remove(artwork.id)}>Remove</button>
+                <button className="btn-ghost text-sm text-red-500" onClick={() => remove(artwork.id)}>Remove</button>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="card p-4 h-fit">
+      <div className="card p-4 h-fit border rounded-lg">
         <div className="flex items-center justify-between">
           <div>Subtotal</div>
           <div className="font-semibold">₹{total.toLocaleString()}</div>

@@ -1,10 +1,12 @@
-// components/TopNav.jsx
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ShoppingCartIcon, Menu, X } from "lucide-react";
+import { useCart } from "../components/CartStore";
 
-export default function TopNav({ cartCount = 0, user = null }) {
+export default function TopNav({ user = null }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const cartItems = useCart((state) => state.items);
+  const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
 
   const categories = [
     { name: "Featured", to: "/featured" },
@@ -38,13 +40,7 @@ export default function TopNav({ cartCount = 0, user = null }) {
               viewBox="0 0 24 24"
               fill="none"
             >
-              <rect
-                width="24"
-                height="24"
-                rx="4"
-                fill="currentColor"
-                opacity="0.9"
-              />
+              <rect width="24" height="24" rx="4" fill="currentColor" opacity="0.9" />
             </svg>
             <span>IFI</span>
           </Link>
@@ -68,13 +64,13 @@ export default function TopNav({ cartCount = 0, user = null }) {
               </button>
             </form>
 
+            {/* Cart */}
             <Link
               to="/cart"
               className="relative p-2 rounded hover:bg-gray-100"
               aria-label="Open cart"
             >
-              <ShoppingCartIcon className="w-6 h-6" />{" "}
-              {/* replaced emoji with icon */}
+              <ShoppingCartIcon className="w-6 h-6" />
               {cartCount > 0 && (
                 <span
                   className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
@@ -109,11 +105,7 @@ export default function TopNav({ cartCount = 0, user = null }) {
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </nav>
@@ -146,27 +138,39 @@ export default function TopNav({ cartCount = 0, user = null }) {
             </button>
           </div>
 
-          {/* Categories list with dividers and accessible spacing */}
+          {/* Categories list with dividers */}
           <nav aria-label="Mobile categories" className="flex-1 overflow-auto">
             <ul className="flex flex-col text-base font-medium text-gray-800 divide-y divide-gray-200">
               {categories.map((cat) => (
                 <li key={cat.to} className="group">
-                  {/* Make the entire row tappable and enforce minimum height */}
                   <NavLink
                     to={cat.to}
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-between w-full min-h-[48px] pl-4 pr-4 text-base leading-6 py-3"
                   >
                     <span className="truncate">{cat.name}</span>
-                    <span
-                      className="ml-4 text-gray-400 group-hover:text-gray-700"
-                      aria-hidden
-                    >
+                    <span className="ml-4 text-gray-400 group-hover:text-gray-700" aria-hidden>
                       {">"}
                     </span>
                   </NavLink>
                 </li>
               ))}
+
+              {/* Mobile Cart */}
+              <li className="group">
+                <Link
+                  to="/cart"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between w-full min-h-[48px] pl-4 pr-4 text-base leading-6 py-3"
+                >
+                  <span>Cart</span>
+                  {cartCount > 0 && (
+                    <span className="ml-4 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                      {cartCount}
+                    </span>
+                  )}
+                </Link>
+              </li>
             </ul>
           </nav>
 

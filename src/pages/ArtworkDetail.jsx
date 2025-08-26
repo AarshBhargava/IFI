@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Api } from "../lib/api";
-import { useCart } from "../Extras/Cart";
+import { useCart } from "../components/CartStore";
 
 export default function ArtworkDetail() {
   const { id } = useParams();
