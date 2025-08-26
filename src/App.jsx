@@ -16,6 +16,7 @@ import Nav from "./components/Nav.jsx";
 import Sell from "./pages/Sell.jsx";
 import Gallery from "./components/Gallery.jsx";
 import Discover from "./pages/Discover.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/discover" element={<Discover />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

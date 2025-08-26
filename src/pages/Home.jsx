@@ -25,7 +25,6 @@ export default function HeroPage() {
       <FeaturedArtwork />
       <FeaturedArtists />
       <Newsletter />
-      <Footer /> 
     </>
   );
 }
