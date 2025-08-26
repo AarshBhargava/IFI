@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ImagePicker from "./ImagePicker";
+import ImagePicker from "../Extras/ImagePicker";
 import { Api } from "../lib/api";
 import { useNavigate } from "react-router-dom";
 

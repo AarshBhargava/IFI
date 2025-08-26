@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const FadeUp = ({ children, delay = 0 }) => (
   <motion.div
@@ -17,7 +18,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-200 py-12">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h4 className="font-semibold text-white">Arte Gallery</h4>
+              <h4 className="font-semibold text-white">IFI</h4>
               <p className="mt-3 text-sm text-gray-300">Contemporary art exhibitions, curated shows, and public programs.</p>
               <div className="mt-4 flex gap-3 text-sm">
                 <a href="#" className="text-gray-300 hover:text-white">Instagram</a>
@@ -38,9 +39,9 @@ export default function Footer() {
             <div>
               <h5 className="font-medium text-white">Info</h5>
               <ul className="mt-3 text-sm text-gray-300 space-y-2">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Exhibitions</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/exhibition">Exhibitions</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
 
